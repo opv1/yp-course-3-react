@@ -1,0 +1,95 @@
+.Button {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  cursor: pointer;
+  &:focus {
+    outline-color: greenyellow;
+  }
+}
+
+.Edit {
+  margin-top: 24px;
+  width: 38px;
+  height: 18px;
+  font-size: 11px;
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.Add {
+  position: absolute;
+  display: block;
+  top: 16px;
+  right: 0;
+  width: 150px;
+  height: 50px;
+  font-size: 30px;
+}
+
+.Popup {
+  margin-top: 48px;
+  width: 100%;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  background-color: #000000;
+  font-size: 18px;
+  line-height: 22px;
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.DeleteIcon {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  background: url(../../../images/trash-icon.svg) center no-repeat;
+  background-color: transparent;
+  border: none;
+  width: 18px;
+  height: 20px;
+  cursor: pointer;
+  display: none;
+}
+
+.LikeIcon {
+  width: 21px;
+  height: 19px;
+  background: url(../../../images/like-inactive.svg) center no-repeat;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s linear;
+}
+
+.ActiveLikeIcon {
+  background-image: url(../../../images/like-active.svg);
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.Disabled {
+  background-color: #ffffff;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.DisplayBlock {
+  display: block;
+}
+
+@media screen and (max-width: 980px) {
+  .Edit {
+    width: 150px;
+    height: 50px;
+    font-size: 30px;
+  }
+
+  .Add {
+    position: static;
+    margin-bottom: 40px;
+  }
+}

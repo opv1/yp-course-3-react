@@ -1,0 +1,52 @@
+.Card {
+  width: 282px;
+  background-color: #fff;
+  border-radius: 10px;
+  min-height: 360px;
+}
+
+.Image {
+  height: 282px;
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  &::after {
+    content: '';
+    display: block;
+    width: 282px;
+    height: 282px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+}
+
+.Description {
+  display: flex;
+  min-height: 78px;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 22px;
+}
+
+.Name {
+  margin: 0;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.Like {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.LikeCounter {
+  font-size: 13px;
+  line-height: 16px;
+  margin-top: 3px;
+}
