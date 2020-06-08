@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/yp-course-3-react/static/css/main.a3d5d349.chunk.css",
-    "main.js": "/yp-course-3-react/static/js/main.30ac5b40.chunk.js",
-    "main.js.map": "/yp-course-3-react/static/js/main.30ac5b40.chunk.js.map",
-    "runtime-main.js": "/yp-course-3-react/static/js/runtime-main.ce03b17c.js",
-    "runtime-main.js.map": "/yp-course-3-react/static/js/runtime-main.ce03b17c.js.map",
-    "static/js/2.9273e56d.chunk.js": "/yp-course-3-react/static/js/2.9273e56d.chunk.js",
-    "static/js/2.9273e56d.chunk.js.map": "/yp-course-3-react/static/js/2.9273e56d.chunk.js.map",
+    "main.js": "/yp-course-3-react/static/js/main.cf7c5c7a.chunk.js",
+    "main.js.map": "/yp-course-3-react/static/js/main.cf7c5c7a.chunk.js.map",
+    "runtime-main.js": "/yp-course-3-react/static/js/runtime-main.804db171.js",
+    "runtime-main.js.map": "/yp-course-3-react/static/js/runtime-main.804db171.js.map",
+    "static/js/2.26eee414.chunk.js": "/yp-course-3-react/static/js/2.26eee414.chunk.js",
+    "static/js/2.26eee414.chunk.js.map": "/yp-course-3-react/static/js/2.26eee414.chunk.js.map",
     "index.html": "/yp-course-3-react/index.html",
-    "precache-manifest.ddad296adf16f9b6bb806214a2008b28.js": "/yp-course-3-react/precache-manifest.ddad296adf16f9b6bb806214a2008b28.js",
+    "precache-manifest.5c0397f1ef00056cf2ec49f2c61ae429.js": "/yp-course-3-react/precache-manifest.5c0397f1ef00056cf2ec49f2c61ae429.js",
     "service-worker.js": "/yp-course-3-react/service-worker.js",
     "static/css/main.a3d5d349.chunk.css.map": "/yp-course-3-react/static/css/main.a3d5d349.chunk.css.map",
-    "static/js/2.9273e56d.chunk.js.LICENSE.txt": "/yp-course-3-react/static/js/2.9273e56d.chunk.js.LICENSE.txt",
+    "static/js/2.26eee414.chunk.js.LICENSE.txt": "/yp-course-3-react/static/js/2.26eee414.chunk.js.LICENSE.txt",
     "static/media/index.module.scss": "/yp-course-3-react/static/media/Inter-Regular.9b0077c4.woff2",
     "static/media/close.svg": "/yp-course-3-react/static/media/close.41450a58.svg",
     "static/media/Button.module.scss": "/yp-course-3-react/static/media/trash-icon.83e46797.svg",
     "static/media/logo.svg": "/yp-course-3-react/static/media/logo.aa3e7ad2.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.ce03b17c.js",
-    "static/js/2.9273e56d.chunk.js",
+    "static/js/runtime-main.804db171.js",
+    "static/js/2.26eee414.chunk.js",
     "static/css/main.a3d5d349.chunk.css",
-    "static/js/main.30ac5b40.chunk.js"
+    "static/js/main.cf7c5c7a.chunk.js"
   ]
 }

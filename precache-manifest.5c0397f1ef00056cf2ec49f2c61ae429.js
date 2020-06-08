@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "361cd4fa15a532503c778bd77e48241b",
+    "revision": "a395e3b72e734d95cab37c6374dad481",
     "url": "/yp-course-3-react/index.html"
   },
   {
-    "revision": "3a6a7721456d611590bb",
+    "revision": "435559242b6d82819ba3",
     "url": "/yp-course-3-react/static/css/main.a3d5d349.chunk.css"
   },
   {
-    "revision": "474213d1fb46d63bfdcf",
-    "url": "/yp-course-3-react/static/js/2.9273e56d.chunk.js"
+    "revision": "7b6ceb2e3a81bff4f5fc",
+    "url": "/yp-course-3-react/static/js/2.26eee414.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/yp-course-3-react/static/js/2.9273e56d.chunk.js.LICENSE.txt"
+    "url": "/yp-course-3-react/static/js/2.26eee414.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3a6a7721456d611590bb",
-    "url": "/yp-course-3-react/static/js/main.30ac5b40.chunk.js"
+    "revision": "435559242b6d82819ba3",
+    "url": "/yp-course-3-react/static/js/main.cf7c5c7a.chunk.js"
   },
   {
-    "revision": "a0ffb37199f499472d1a",
-    "url": "/yp-course-3-react/static/js/runtime-main.ce03b17c.js"
+    "revision": "4f2717bd7857815a3c01",
+    "url": "/yp-course-3-react/static/js/runtime-main.804db171.js"
   },
   {
     "revision": "2d38e5b941b55699e49a27dad4fec267",
