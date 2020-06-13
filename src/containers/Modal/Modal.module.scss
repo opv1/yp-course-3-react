@@ -1,13 +1,13 @@
 .Modal {
+  display: none;
   position: fixed;
+  justify-content: center;
+  align-items: center;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  align-items: center;
-  justify-content: center;
-  display: none;
 }
 
 .Avatar {
@@ -27,30 +27,31 @@
 }
 
 .Content {
+  position: relative;
+  padding: 34px 36px;
   width: 430px;
   min-height: 330px;
   background-color: #fff;
-  position: relative;
-  box-sizing: border-box;
-  padding: 34px 36px;
   border-radius: 10px;
+  box-sizing: border-box;
 }
 
 .ContentImage {
+  position: relative;
+  padding: 0;
   max-width: 80vw;
   max-height: 80vh;
   width: 100%;
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 0;
   background-color: transparent;
   border-radius: 0px;
 }
 
 .Close {
-  width: 26px;
   position: absolute;
+  width: 26px;
   top: -26px;
   right: -26px;
   cursor: pointer;

@@ -19,8 +19,8 @@
 }
 
 .Add {
-  position: absolute;
   display: block;
+  position: absolute;
   top: 16px;
   right: 0;
   width: 150px;
@@ -43,6 +43,7 @@
 }
 
 .DeleteIcon {
+  display: none;
   position: absolute;
   top: 18px;
   right: 15px;
@@ -52,7 +53,6 @@
   width: 18px;
   height: 20px;
   cursor: pointer;
-  display: none;
 }
 
 .LikeIcon {

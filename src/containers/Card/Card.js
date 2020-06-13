@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './Card.module.scss';
-import axios from '../../axios/axios';
+import Axios from '../../hoc/Axios/Axios';
 import Button from '../../components/UI/Button/Button';
 
-export default class Card extends React.Component {
+class Card extends Component {
   state = {
     showDeleteIcon: false,
     activateLike: false,
@@ -35,22 +35,24 @@ export default class Card extends React.Component {
     const likeIcon = event.target.closest('.Button_LikeIcon__2q2NK');
 
     if (likeIcon.classList.contains('Button_ActiveLikeIcon__1dC21')) {
-      axios
-        .delete(`/cards/like/${card}`)
+      Axios.delete(`/cards/like/${card}`)
         .then(() =>
-          this.setState({
-            activateLike: false,
-            likeCounter: this.state.likeCounter - 1,
+          this.setState((prevState) => {
+            return {
+              activateLike: false,
+              likeCounter: prevState.likeCounter - 1,
+            };
           })
         )
         .catch((error) => console.log(error));
     } else {
-      axios
-        .put(`/cards/like/${card}`)
+      Axios.put(`/cards/like/${card}`)
         .then(() =>
-          this.setState({
-            activateLike: true,
-            likeCounter: this.state.likeCounter + 1,
+          this.setState((prevState) => {
+            return {
+              activateLike: true,
+              likeCounter: prevState.likeCounter + 1,
+            };
           })
         )
         .catch((error) => console.log(error));
@@ -94,3 +96,5 @@ export default class Card extends React.Component {
     );
   }
 }
+
+export default Card;

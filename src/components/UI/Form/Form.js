@@ -1,20 +1,21 @@
 import React from 'react';
 import classes from './Form.module.scss';
 
-export default class Form extends React.Component {
-  render() {
-    const cls = [classes.Form, classes[this.props.type]];
+const Form = (props) => {
+  const { onSubmit, type, name, style } = props;
+  const cls = [classes.Form, classes[type]];
 
-    return (
-      <form
-        onSubmit={this.props.onSubmit}
-        className={cls.join(' ')}
-        name={this.props.name}
-        style={this.props.style}
-        noValidate
-      >
-        {this.props.children}
-      </form>
-    );
-  }
-}
+  return (
+    <form
+      onSubmit={onSubmit}
+      className={cls.join(' ')}
+      name={name}
+      style={style}
+      noValidate
+    >
+      {props.children}
+    </form>
+  );
+};
+
+export default Form;

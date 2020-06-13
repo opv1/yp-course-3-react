@@ -1,17 +1,17 @@
 .Card {
   width: 282px;
+  min-height: 360px;
   background-color: #fff;
   border-radius: 10px;
-  min-height: 360px;
 }
 
 .Image {
+  position: relative;
   height: 282px;
   background-size: cover;
   background-position: center;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  position: relative;
   cursor: pointer;
   &::after {
     content: '';
@@ -26,11 +26,11 @@
 
 .Description {
   display: flex;
+  justify-content: space-between;
+  padding: 0 22px;
   min-height: 78px;
   align-items: center;
-  justify-content: space-between;
   box-sizing: border-box;
-  padding: 0 22px;
 }
 
 .Name {
@@ -46,7 +46,7 @@
 }
 
 .LikeCounter {
+  margin-top: 3px;
   font-size: 13px;
   line-height: 16px;
-  margin-top: 3px;
 }

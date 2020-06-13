@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './CardList.module.scss';
 import Card from '../Card/Card';
 
-export default class CardList extends React.Component {
+class CardList extends Component {
   render() {
     const {
       myId,
@@ -29,3 +29,5 @@ export default class CardList extends React.Component {
     );
   }
 }
+
+export default CardList;

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './Profile.module.scss';
 import Button from '../../components/UI/Button/Button';
 
-export default class Profile extends React.Component {
+class Profile extends Component {
   render() {
     const { userInfo, handleShowModal } = this.props;
     const { avatar, name, about } = userInfo;
@@ -33,3 +33,5 @@ export default class Profile extends React.Component {
     );
   }
 }
+
+export default Profile;

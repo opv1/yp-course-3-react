@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './Header.module.scss';
 import logo from '../../images/logo.svg';
 
-export default class Header extends React.Component {
+class Header extends Component {
   render() {
     return (
       <header className={classes.Header}>
@@ -11,3 +11,5 @@ export default class Header extends React.Component {
     );
   }
 }
+
+export default Header;

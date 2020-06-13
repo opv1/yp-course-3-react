@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export default class Portal extends React.PureComponent {
+class Portal extends React.Component {
   el = document.createElement('div');
 
   componentDidMount() {
@@ -16,3 +16,5 @@ export default class Portal extends React.PureComponent {
     return ReactDOM.createPortal(this.props.children, this.el);
   }
 }
+
+export default Portal;
