@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/yp-course-3-react/precache-manifest.5c0397f1ef00056cf2ec49f2c61ae429.js"
+  "/yp-course-3-react/precache-manifest.4353e7ed12a5b417af67e611b861e3ff.js"
 );
 
 self.addEventListener('message', (event) => {
