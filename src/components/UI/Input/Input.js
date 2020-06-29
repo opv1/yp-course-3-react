@@ -1,8 +1,15 @@
 import React from 'react';
 import classes from './Input.module.scss';
 
-const Input = (props) => {
-  const { onChange, value, type, name, placeholder, valid, validation } = props;
+const Input = ({
+  onChange,
+  value,
+  type,
+  name,
+  placeholder,
+  valid,
+  validation,
+}) => {
   const cls = [classes.Input];
 
   if (!valid) {

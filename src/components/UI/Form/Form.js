@@ -1,8 +1,7 @@
 import React from 'react';
 import classes from './Form.module.scss';
 
-const Form = (props) => {
-  const { onSubmit, type, name, style } = props;
+const Form = ({ onSubmit, type, name, style, children }) => {
   const cls = [classes.Form, classes[type]];
 
   return (
@@ -13,7 +12,7 @@ const Form = (props) => {
       style={style}
       noValidate
     >
-      {props.children}
+      {children}
     </form>
   );
 };

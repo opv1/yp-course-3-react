@@ -1,8 +1,14 @@
 import React from 'react';
 import classes from './Button.module.scss';
 
-const Button = (props) => {
-  const { onClick, type, disabled, activateLike, showDeleteIcon } = props;
+const Button = ({
+  onClick,
+  type,
+  disabled,
+  activateLike,
+  showDeleteIcon,
+  children,
+}) => {
   const cls = [classes.Button, classes[type]];
 
   if (disabled) {
@@ -24,7 +30,7 @@ const Button = (props) => {
       name={'button'}
       disabled={disabled}
     >
-      {props.children}
+      {children}
     </button>
   );
 };

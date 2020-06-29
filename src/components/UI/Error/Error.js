@@ -1,9 +1,7 @@
 import React from 'react';
 import classes from './Error.module.scss';
 
-const Error = (props) => {
-  const { errorMessage } = props;
-
+const Error = ({ errorMessage }) => {
   return <span className={classes.Error}>{errorMessage}</span>;
 };
 

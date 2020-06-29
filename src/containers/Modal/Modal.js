@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import classes from './Modal.module.scss';
 import close from '../../images/close.svg';
-import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
+import Auxiliary from '../../scripts/Auxiliary/Auxiliary';
+import Context from '../../context/Context/Context';
 import Form from '../../components/UI/Form/Form';
 import Input from '../../components/UI/Input/Input';
 import Error from '../../components/UI/Error/Error';
@@ -11,20 +12,20 @@ import {
   validateForm,
   validateControl,
   errorMessage,
-} from '../../formFramework/formFramework';
+} from '../../scripts/formFramework/formFramework';
 
-class Modal extends Component {
-  state = {
+function Modal({ userInfo, typeModal, backgroundImage }) {
+  const [state, setState] = useState({
     modalConfig: {},
     formControls: {},
     isFormValid: false,
-  };
+  });
 
-  componentDidMount() {
-    if (this.props.typeModal === 'Avatar') {
-      return this.setState({
+  useEffect(() => {
+    if (typeModal === 'Avatar') {
+      setState((prevState) => ({
+        ...prevState,
         modalConfig: {
-          typeModal: this.props.typeModal,
           nameModal: 'обновить аватар',
           typeForm: 'Avatar',
           nameFrom: 'avatar',
@@ -41,13 +42,13 @@ class Modal extends Component {
             { url: true, required: true }
           ),
         },
-      });
+      }));
     }
 
-    if (this.props.typeModal === 'Edit') {
-      return this.setState({
+    if (typeModal === 'Edit') {
+      setState((prevState) => ({
+        ...prevState,
         modalConfig: {
-          typeModal: this.props.typeModal,
           nameModal: 'редактировать профиль',
           typeForm: 'Edit',
           nameFrom: 'edit',
@@ -56,7 +57,7 @@ class Modal extends Component {
         formControls: {
           name: createControl(
             {
-              value: this.props.userInfo.name,
+              value: userInfo.name,
               type: 'text',
               name: 'name',
               placeholder: 'Имя',
@@ -65,7 +66,7 @@ class Modal extends Component {
           ),
           info: createControl(
             {
-              value: this.props.userInfo.about,
+              value: userInfo.about,
               type: 'text',
               name: 'info',
               placeholder: 'О себе',
@@ -73,14 +74,14 @@ class Modal extends Component {
             { minLength: 2, maxLength: 30, required: true }
           ),
         },
-        isFormValid: validateForm(this.state.formControls),
-      });
+        isFormValid: validateForm(state.formControls),
+      }));
     }
 
-    if (this.props.typeModal === 'Add') {
-      return this.setState({
+    if (typeModal === 'Add') {
+      setState((prevState) => ({
+        ...prevState,
         modalConfig: {
-          typeModal: this.props.typeModal,
           nameModal: 'новое место',
           typeForm: 'Add',
           nameFrom: 'add',
@@ -101,31 +102,13 @@ class Modal extends Component {
             { url: true, required: true }
           ),
         },
-      });
+      }));
     }
+    // eslint-disable-next-line
+  }, []);
 
-    if (this.props.typeModal === 'Image') {
-      return this.setState({
-        modalConfig: {
-          typeModal: this.props.typeModal,
-          backgroundImage: this.props.backgroundImage,
-        },
-      });
-    }
-
-    return false;
-  }
-
-  handleClick = (event, handleShowModal) => {
-    if (event.target.classList.contains('Modal_Modal__3rlzY')) {
-      return handleShowModal();
-    }
-
-    return false;
-  };
-
-  handleChange = (event, controlName) => {
-    const formControls = { ...this.state.formControls };
+  const handleChange = (event, controlName) => {
+    const formControls = { ...state.formControls };
     const control = { ...formControls[controlName] };
 
     control.value = event.target.value;
@@ -137,20 +120,21 @@ class Modal extends Component {
 
     const isFormValid = validateForm(formControls);
 
-    this.setState({
+    setState((prevState) => ({
+      ...prevState,
       formControls,
       isFormValid,
-    });
+    }));
   };
 
-  handleRenderInputs = () => {
-    return Object.keys(this.state.formControls).map((controlName, index) => {
-      const control = this.state.formControls[controlName];
+  const handleRenderInputs = () => {
+    return Object.keys(state.formControls).map((controlName, index) => {
+      const control = state.formControls[controlName];
 
       return (
         <Auxiliary key={index + 1}>
           <Input
-            onChange={(event) => this.handleChange(event, controlName)}
+            onChange={(event) => handleChange(event, controlName)}
             value={control.value}
             type={control.type}
             name={control.name}
@@ -166,55 +150,48 @@ class Modal extends Component {
     });
   };
 
-  render() {
-    const { handleShowModal, handleSubmit } = this.props;
-    const {
-      typeModal,
-      nameModal,
-      typeForm,
-      nameFrom,
-      nameButton,
-      backgroundImage,
-    } = this.state.modalConfig;
-    const cls = [classes.Modal, classes[typeModal]];
+  const { handleShowModal, handleSubmit } = useContext(Context);
 
-    return (
-      <div className={cls.join(' ')}>
-        <div
-          className={
-            typeModal === 'Image'
-              ? (classes.Content, classes.ContentImage)
-              : classes.Content
-          }
-          style={backgroundImage}
+  const { nameModal, typeForm, nameFrom, nameButton } = state.modalConfig;
+
+  const cls = [classes.Modal, classes[typeModal]];
+
+  return (
+    <div className={cls.join(' ')}>
+      <div
+        className={
+          typeModal === 'Image'
+            ? (classes.Content, classes.ContentImage)
+            : classes.Content
+        }
+        style={typeModal === 'Image' ? backgroundImage : null}
+      >
+        <img
+          onClick={handleShowModal}
+          src={close}
+          alt='Close'
+          className={classes.Close}
+        />
+        <h3
+          className={classes.Title}
+          style={typeModal === 'Image' ? { display: 'none' } : null}
         >
-          <img
-            onClick={handleShowModal}
-            src={close}
-            alt='Close'
-            className={classes.Close}
-          />
-          <h3
-            className={classes.Title}
-            style={typeModal === 'Image' ? { display: 'none' } : null}
-          >
-            {nameModal}
-          </h3>
-          <Form
-            onSubmit={handleSubmit}
-            type={typeForm}
-            name={nameFrom}
-            style={typeModal === 'Image' ? { display: 'none' } : null}
-          >
-            {this.handleRenderInputs()}
-            <Button type={'Popup'} disabled={!this.state.isFormValid}>
-              {nameButton}
-            </Button>
-          </Form>
-        </div>
+          {nameModal}
+        </h3>
+        <Form
+          onSubmit={handleSubmit}
+          type={typeForm}
+          name={nameFrom}
+          style={typeModal === 'Image' ? { display: 'none' } : null}
+        >
+          {handleRenderInputs()}
+          <Button type={'Popup'} disabled={!state.isFormValid}>
+            {nameButton}
+          </Button>
+        </Form>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Modal;

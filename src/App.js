@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import './App.module.scss';
-import Axios from './hoc/Axios/Axios';
-import Layout from './hoc/Layout/Layout';
+import React, { useState, useEffect } from 'react';
+import './App.scss';
+import Context from './context/Context/Context';
+import Axios from './scripts/Axios/Axios';
+import Layout from './containers/Layout/Layout';
 import Header from './containers/Header/Header';
 import Profile from './containers/Profile/Profile';
 import CardList from './containers/CardList/CardList';
@@ -9,8 +10,8 @@ import Modal from './containers/Modal/Modal';
 import Loader from './components/Loader/Loader';
 import Portal from './components/Portal/Portal';
 
-class App extends Component {
-  state = {
+function App() {
+  const [state, setState] = useState({
     loading: true,
     showModal: false,
     myId: '24ee49f7ef633fcc99f70066',
@@ -18,51 +19,54 @@ class App extends Component {
     initialCards: [],
     typeModal: null,
     backgroundImage: null,
-  };
+  });
 
-  async componentDidMount() {
-    try {
-      const responseInfo = await Axios.get('/users/me/');
-      const responseCards = await Axios.get('/cards/');
-      const myCards = [];
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const responseInfo = await Axios.get('/users/me/');
+        const responseCards = await Axios.get('/cards/');
+        const myCards = [];
 
-      for (let i = 0; responseCards.data.length > i; i++) {
-        if (responseCards.data[i].owner._id === this.state.myId) {
-          myCards.push(responseCards.data[i]);
+        for (let i = 0; responseCards.data.length > i; i++) {
+          if (responseCards.data[i].owner._id === state.myId) {
+            myCards.push(responseCards.data[i]);
+          }
         }
+
+        setState((prevState) => ({
+          ...prevState,
+          loading: false,
+          userInfo: responseInfo.data,
+          initialCards: myCards,
+        }));
+      } catch (error) {
+        console.log(error);
       }
+    };
 
-      this.setState({
-        loading: false,
-        userInfo: responseInfo.data,
-        initialCards: myCards,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }
+    fetch();
+    // eslint-disable-next-line
+  }, []);
 
-  handleShowModal = () => {
-    this.setState({ showModal: !this.state.showModal });
+  const handleShowModal = () => {
+    setState((prevState) => ({
+      ...prevState,
+      showModal: !prevState.showModal,
+    }));
   };
 
-  handleClick = (event) => {
+  const handleClick = (event) => {
     if (event.target.closest('.Profile_Avatar__2gqkF')) {
-      return this.setState({
-        typeModal: 'Avatar',
-      });
+      setState((prevState) => ({ ...prevState, typeModal: 'Avatar' }));
     }
 
     if (event.target.closest('.Button_Edit__2mjyM')) {
-      return this.setState({
-        typeModal: 'Edit',
-      });
+      setState((prevState) => ({ ...prevState, typeModal: 'Edit' }));
     }
 
     if (event.target.closest('.Button_Add__pQA0V')) {
-      return this.setState({
-        typeModal: 'Add',
-      });
+      setState((prevState) => ({ ...prevState, typeModal: 'Add' }));
     }
 
     if (event.target.closest('.Card_Image__3zHVY')) {
@@ -70,20 +74,15 @@ class App extends Component {
         backgroundImage: event.target.style.backgroundImage,
       };
 
-      return this.setState({
+      setState((prevState) => ({
+        ...prevState,
         typeModal: 'Image',
         backgroundImage,
-      });
+      }));
     }
-
-    if (event.target.classList.contains('Modal_Modal__3rlzY')) {
-      return this.handleShowModal();
-    }
-
-    return false;
   };
 
-  handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     const form = event.target;
@@ -98,16 +97,17 @@ class App extends Component {
           })
         );
       });
-      return loadPromise
+      loadPromise
         .then(() =>
-          this.setState({
+          setState((prevState) => ({
+            ...prevState,
             userInfo: {
-              ...this.state.userInfo,
+              ...prevState.userInfo,
               avatar: form.elements.link.value,
             },
-          })
+          }))
         )
-        .then(() => this.handleShowModal())
+        .then(() => handleShowModal())
         .catch((error) => console.log(error));
     }
 
@@ -121,17 +121,18 @@ class App extends Component {
           })
         );
       });
-      return loadPromise
+      loadPromise
         .then(() =>
-          this.setState({
+          setState((prevState) => ({
+            ...prevState,
             userInfo: {
-              ...this.state.userInfo,
+              ...prevState.userInfo,
               name: form.elements.name.value,
               about: form.elements.info.value,
             },
-          })
+          }))
         )
-        .then(() => this.handleShowModal())
+        .then(() => handleShowModal())
         .catch((error) => console.log(error));
     }
 
@@ -145,69 +146,56 @@ class App extends Component {
           })
         );
       });
-      return loadPromise
+      loadPromise
         .then((card) =>
-          this.setState({
-            initialCards: this.state.initialCards.concat(card.data),
-          })
+          setState((prevState) => ({
+            ...prevState,
+            initialCards: state.initialCards.concat(card.data),
+          }))
         )
-        .then(() => this.handleShowModal())
+        .then(() => handleShowModal())
         .catch((error) => console.log(error));
     }
-
-    return false;
   };
 
-  handleRemoveCard = (event, cardId) => {
+  const handleRemoveCard = (event, cardId) => {
     event.stopPropagation();
 
-    const initialCards = this.state.initialCards.filter(
+    const initialCards = state.initialCards.filter(
       (card) => card._id !== cardId
     );
 
     Axios.delete(`/cards/${cardId}/`)
-      .then(() =>
-        this.setState({
-          initialCards,
-        })
-      )
+      .then(() => setState((prevState) => ({ ...prevState, initialCards })))
       .catch((error) => console.log(error));
   };
 
-  render() {
-    return (
+  return (
+    <Context.Provider
+      value={{ handleShowModal, handleSubmit, handleRemoveCard }}
+    >
       <Layout>
         <Header />
-        {this.state.loading ? (
+        {state.loading ? (
           <Loader />
         ) : (
-          <main onClick={(event) => this.handleClick(event)}>
-            <Profile
-              userInfo={this.state.userInfo}
-              handleShowModal={this.handleShowModal}
-            />
-            <CardList
-              myId={this.state.myId}
-              initialCards={this.state.initialCards}
-              handleShowModal={this.handleShowModal}
-              handleRemoveCard={this.handleRemoveCard}
-            />
+          <main onClick={(event) => handleClick(event)}>
+            <Profile userInfo={state.userInfo} />
+            <CardList myId={state.myId} initialCards={state.initialCards} />
           </main>
         )}
-        {this.state.showModal ? (
+        {state.showModal ? (
           <Portal>
             <Modal
-              userInfo={this.state.userInfo}
-              typeModal={this.state.typeModal}
-              backgroundImage={this.state.backgroundImage}
-              handleShowModal={this.handleShowModal}
-              handleSubmit={this.handleSubmit}
+              userInfo={state.userInfo}
+              typeModal={state.typeModal}
+              backgroundImage={state.backgroundImage}
             />
           </Portal>
         ) : null}
       </Layout>
-    );
-  }
+    </Context.Provider>
+  );
 }
 
 export default App;

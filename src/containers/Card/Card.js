@@ -1,100 +1,93 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import classes from './Card.module.scss';
-import Axios from '../../hoc/Axios/Axios';
+import Axios from '../../scripts/Axios/Axios';
+import Context from '../../context/Context/Context';
 import Button from '../../components/UI/Button/Button';
 
-class Card extends Component {
-  state = {
+function Card({ myId, children }) {
+  const [state, setState] = useState({
     showDeleteIcon: false,
     activateLike: false,
     likeCounter: null,
-  };
+  });
 
-  componentDidMount() {
-    if (this.props.children.owner._id === this.props.myId) {
-      this.setState({
-        showDeleteIcon: true,
-      });
+  useEffect(() => {
+    if (children.owner._id === myId) {
+      setState((prevState) => ({ ...prevState, showDeleteIcon: true }));
     }
 
-    this.props.children.likes.forEach((like) => {
-      if (like._id === this.props.myId) {
-        this.setState({
-          activateLike: true,
-        });
+    children.likes.forEach((like) => {
+      if (like._id === myId) {
+        setState((prevState) => ({ ...prevState, activateLike: true }));
       }
     });
 
-    this.setState({
-      likeCounter: this.props.children.likes.length,
-    });
-  }
+    setState((prevState) => ({
+      ...prevState,
+      likeCounter: children.likes.length,
+    }));
+    // eslint-disable-next-line
+  }, []);
 
-  handleLike = (event) => {
+  const handleLike = (event) => {
     const card = event.target.closest('.Card_Card__1-aIe').getAttribute('data');
     const likeIcon = event.target.closest('.Button_LikeIcon__2q2NK');
 
     if (likeIcon.classList.contains('Button_ActiveLikeIcon__1dC21')) {
       Axios.delete(`/cards/like/${card}`)
         .then(() =>
-          this.setState((prevState) => {
-            return {
-              activateLike: false,
-              likeCounter: prevState.likeCounter - 1,
-            };
-          })
+          setState((prevState) => ({
+            ...prevState,
+            activateLike: false,
+            likeCounter: prevState.likeCounter - 1,
+          }))
         )
         .catch((error) => console.log(error));
     } else {
       Axios.put(`/cards/like/${card}`)
         .then(() =>
-          this.setState((prevState) => {
-            return {
-              activateLike: true,
-              likeCounter: prevState.likeCounter + 1,
-            };
-          })
+          setState((prevState) => ({
+            ...prevState,
+            activateLike: true,
+            likeCounter: prevState.likeCounter + 1,
+          }))
         )
         .catch((error) => console.log(error));
     }
   };
 
-  render() {
-    const { handleShowModal, handleRemoveCard } = this.props;
-    const { link, _id, name } = this.props.children;
-    const backgroundImage = {
-      backgroundImage: `url('${link}')`,
-    };
+  const { handleShowModal, handleRemoveCard } = useContext(Context);
 
-    return (
-      <div className={classes.Card} data={_id}>
-        <div
-          onClick={handleShowModal}
-          className={classes.Image}
-          style={backgroundImage}
-        >
+  const backgroundImage = {
+    backgroundImage: `url('${children.link}')`,
+  };
+
+  return (
+    <div className={classes.Card} data={children._id}>
+      <div
+        onClick={handleShowModal}
+        className={classes.Image}
+        style={backgroundImage}
+      >
+        <Button
+          onClick={(event) => handleRemoveCard(event, children._id)}
+          type={'DeleteIcon'}
+          showDeleteIcon={state.showDeleteIcon}
+        />
+      </div>
+      <div className={classes.Description}>
+        <h3 className={classes.Name}>{children.name}</h3>
+        <div className={classes.Like}>
           <Button
-            onClick={handleRemoveCard}
-            type={'DeleteIcon'}
-            showDeleteIcon={this.state.showDeleteIcon}
+            onClick={(event) => handleLike(event)}
+            type={'LikeIcon'}
+            activateLike={state.activateLike}
           />
-        </div>
-        <div className={classes.Description}>
-          <h3 className={classes.Name}>{name}</h3>
-          <div className={classes.Like}>
-            <Button
-              onClick={this.handleLike}
-              type={'LikeIcon'}
-              activateLike={this.state.activateLike}
-            />
-            <span className={classes.LikeCounter}>
-              {this.state.likeCounter}
-            </span>
-          </div>
+          <span className={classes.LikeCounter}>{state.likeCounter}</span>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Card;
