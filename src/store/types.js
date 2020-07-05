@@ -1,0 +1,13 @@
+export const INITIAL_DATA = 'INITIAL_DATA';
+export const TOGGLE_MODAL = 'TOGGLE_MODAL';
+export const SET_MODAL = 'SET_MODAL';
+export const AVATAR_UPDATE = 'AVATAR_UPDATE';
+export const INFO_UPDATE = 'INFO_UPDATE';
+export const CARDS_UPDATE = 'CARDS_UPDATE';
+export const REMOVE_CARD = 'REMOVE_CARD';
+export const AVATAR_MODAL = 'AVATAR_MODAL';
+export const EDIT_MODAL = 'EDIT_MODAL';
+export const ADD_MODAL = 'ADD_MODAL';
+export const IMAGE_MODAL = 'IMAGE_MODAL';
+export const VALIDATE_FORM = 'VALIDATE_FORM';
+export const INPUT_CHANGE = 'INPUT_CHANGE';

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import classes from './Profile.module.scss';
-import Context from '../../context/Context/Context';
 import Button from '../../components/UI/Button/Button';
+import { AppContext } from '../../store/app/appContext';
 
-function Profile({ userInfo }) {
-  const { handleShowModal } = useContext(Context);
+function Profile() {
+  const { userInfo, toggleModal } = useContext(AppContext);
 
   const backgroundImage = {
     backgroundImage: `url('${userInfo.avatar}')`,
@@ -15,17 +15,17 @@ function Profile({ userInfo }) {
       <div className={classes.Info}>
         <div
           className={classes.Avatar}
-          onClick={handleShowModal}
+          onClick={toggleModal}
           style={backgroundImage}
         ></div>
         <div className={classes.Data}>
           <h1 className={classes.Name}>{userInfo.name}</h1>
           <p className={classes.Job}>{userInfo.about}</p>
-          <Button type={'Edit'} onClick={handleShowModal}>
+          <Button type={'Edit'} onClick={toggleModal}>
             edit
           </Button>
         </div>
-        <Button type={'Add'} onClick={handleShowModal}>
+        <Button type={'Add'} onClick={toggleModal}>
           +
         </Button>
       </div>

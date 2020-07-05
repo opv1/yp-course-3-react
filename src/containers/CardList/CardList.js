@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classes from './CardList.module.scss';
 import Card from '../Card/Card';
+import { AppContext } from '../../store/app/appContext';
 
-function CardList({ initialCards, myId }) {
+function CardList() {
+  const { initialCards } = useContext(AppContext);
+
   return (
     <div className={classes.CardList}>
       {initialCards.map((card) => {
-        return (
-          <Card key={card._id} myId={myId}>
-            {card}
-          </Card>
-        );
+        return <Card key={card._id}>{card}</Card>;
       })}
     </div>
   );

@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react';
 import classes from './Card.module.scss';
 import Axios from '../../scripts/Axios/Axios';
-import Context from '../../context/Context/Context';
 import Button from '../../components/UI/Button/Button';
+import { AppContext } from '../../store/app/appContext';
 
-function Card({ myId, children }) {
+function Card({ children }) {
   const [state, setState] = useState({
     showDeleteIcon: false,
     activateLike: false,
     likeCounter: null,
   });
+
+  const { myId, toggleModal, removeCard } = useContext(AppContext);
 
   useEffect(() => {
     if (children.owner._id === myId) {
@@ -29,7 +31,7 @@ function Card({ myId, children }) {
     // eslint-disable-next-line
   }, []);
 
-  const handleLike = (event) => {
+  const toggleLike = (event) => {
     const card = event.target.closest('.Card_Card__1-aIe').getAttribute('data');
     const likeIcon = event.target.closest('.Button_LikeIcon__2q2NK');
 
@@ -56,8 +58,6 @@ function Card({ myId, children }) {
     }
   };
 
-  const { handleShowModal, handleRemoveCard } = useContext(Context);
-
   const backgroundImage = {
     backgroundImage: `url('${children.link}')`,
   };
@@ -65,12 +65,12 @@ function Card({ myId, children }) {
   return (
     <div className={classes.Card} data={children._id}>
       <div
-        onClick={handleShowModal}
+        onClick={toggleModal}
         className={classes.Image}
         style={backgroundImage}
       >
         <Button
-          onClick={(event) => handleRemoveCard(event, children._id)}
+          onClick={(event) => removeCard(event, children._id)}
           type={'DeleteIcon'}
           showDeleteIcon={state.showDeleteIcon}
         />
@@ -79,7 +79,7 @@ function Card({ myId, children }) {
         <h3 className={classes.Name}>{children.name}</h3>
         <div className={classes.Like}>
           <Button
-            onClick={(event) => handleLike(event)}
+            onClick={(event) => toggleLike(event)}
             type={'LikeIcon'}
             activateLike={state.activateLike}
           />

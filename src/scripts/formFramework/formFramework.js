@@ -6,7 +6,7 @@ export function createControl(config, validation) {
     touched: false,
     validation,
     valid: validateControl(config.value, validation),
-    errorMessage: errorMessage(config.value, validation, true),
+    errorMessage: errorMessage(config.value, validation, false),
   };
 }
 
@@ -45,7 +45,7 @@ export function validateControl(value, validation) {
 }
 
 export function errorMessage(value, validation, touched) {
-  if (touched) {
+  if (!touched) {
     return '';
   }
 
