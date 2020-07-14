@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import './App.scss';
-import { AppContext } from './store/app/appContext';
+import { AppContext } from './context/app/AppContext';
 import Layout from './containers/Layout/Layout';
 import Header from './containers/Header/Header';
 import Profile from './containers/Profile/Profile';

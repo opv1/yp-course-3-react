@@ -3,8 +3,8 @@ import classes from './Modal.module.scss';
 import close from '../../images/close.svg';
 import Form from '../../components/UI/Form/Form';
 import Button from '../../components/UI/Button/Button';
-import { AppContext } from '../../store/app/appContext';
-import { ModalContext } from '../../store/modal/modalContext';
+import { AppContext } from '../../context/app/AppContext';
+import { ModalContext } from '../../context/modal/ModalContext';
 
 function Modal() {
   const {

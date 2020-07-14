@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
-import Axios from '../../scripts/Axios/Axios';
-import { AppContext } from './appContext';
-import { AppReducer } from './appReducer';
+import { axiosData } from '../../scripts/axios/axios';
+import { AppContext } from './AppContext';
+import { appReducer } from './appReducer';
 import {
   INITIAL_DATA,
   TOGGLE_MODAL,
@@ -23,11 +23,11 @@ export const AppState = ({ children }) => {
     openImage: null,
   };
 
-  const [state, dispatch] = useReducer(AppReducer, initialState);
+  const [state, dispatch] = useReducer(appReducer, initialState);
 
   const initialData = async () => {
-    const responseInfo = await Axios.get('/users/me/');
-    const responseCards = await Axios.get('/cards/');
+    const responseInfo = await axiosData.get('/users/me/');
+    const responseCards = await axiosData.get('/cards/');
     const myCards = [];
 
     for (let i = 0; responseCards.data.length > i; i++) {
@@ -94,7 +94,7 @@ export const AppState = ({ children }) => {
       const loadPromise = new Promise((resolve) => {
         button.textContent = 'Загрузка...';
         resolve(
-          Axios.patch('/users/me/avatar/', {
+          axiosData.patch('/users/me/avatar/', {
             avatar: form.elements.link.value,
           })
         );
@@ -117,7 +117,7 @@ export const AppState = ({ children }) => {
       const loadPromise = new Promise((resolve) => {
         button.textContent = 'Загрузка...';
         resolve(
-          Axios.patch('/users/me/', {
+          axiosData.patch('/users/me/', {
             name: form.elements.name.value,
             about: form.elements.info.value,
           })
@@ -142,7 +142,7 @@ export const AppState = ({ children }) => {
       const loadPromise = new Promise((resolve) => {
         button.textContent = 'Загрузка...';
         resolve(
-          Axios.post('/cards/', {
+          axiosData.post('/cards/', {
             name: form.elements.name.value,
             link: form.elements.link.value,
           })
@@ -165,7 +165,8 @@ export const AppState = ({ children }) => {
 
     const filteredCards = initialCards.filter((card) => card._id !== cardId);
 
-    Axios.delete(`/cards/${cardId}/`)
+    axiosData
+      .delete(`/cards/${cardId}/`)
       .then(() =>
         dispatch({
           type: REMOVE_CARD,

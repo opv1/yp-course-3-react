@@ -40,7 +40,7 @@ const handlers = {
   DEFAULT: (state) => state,
 };
 
-export const AppReducer = (state, action) => {
+export const appReducer = (state, action) => {
   const handler = handlers[action.type] || handlers.DEFAULT;
 
   return handler(state, action);

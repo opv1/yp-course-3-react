@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.scss';
 import App from './App';
-import { AppState } from './store/app/appState';
-import { ModalState } from './store/modal/modalState';
+import { AppState } from './context/app/AppState';
+import { ModalState } from './context/modal/ModalState';
 import * as serviceWorker from './serviceWorker';
 
 const Application = (

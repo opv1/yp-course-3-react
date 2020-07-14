@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import classes from './Profile.module.scss';
 import Button from '../../components/UI/Button/Button';
-import { AppContext } from '../../store/app/appContext';
+import { AppContext } from '../../context/app/AppContext';
 
 function Profile() {
   const { userInfo, toggleModal } = useContext(AppContext);

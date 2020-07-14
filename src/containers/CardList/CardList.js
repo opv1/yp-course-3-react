@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import classes from './CardList.module.scss';
 import Card from '../Card/Card';
-import { AppContext } from '../../store/app/appContext';
+import { AppContext } from '../../context/app/AppContext';
 
 function CardList() {
   const { initialCards } = useContext(AppContext);

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import classes from './Card.module.scss';
-import Axios from '../../scripts/Axios/Axios';
+import { axiosData } from '../../scripts/axios/axios';
 import Button from '../../components/UI/Button/Button';
-import { AppContext } from '../../store/app/appContext';
+import { AppContext } from '../../context/app/AppContext';
 
 function Card({ children }) {
   const [state, setState] = useState({
@@ -36,7 +36,8 @@ function Card({ children }) {
     const likeIcon = event.target.closest('.Button_LikeIcon__2q2NK');
 
     if (likeIcon.classList.contains('Button_ActiveLikeIcon__1dC21')) {
-      Axios.delete(`/cards/like/${card}`)
+      axiosData
+        .delete(`/cards/like/${card}`)
         .then(() =>
           setState((prevState) => ({
             ...prevState,
@@ -46,7 +47,8 @@ function Card({ children }) {
         )
         .catch((error) => console.log(error));
     } else {
-      Axios.put(`/cards/like/${card}`)
+      axiosData
+        .put(`/cards/like/${card}`)
         .then(() =>
           setState((prevState) => ({
             ...prevState,

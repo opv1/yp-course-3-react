@@ -2,8 +2,8 @@ import React, { useReducer } from 'react';
 import Auxiliary from '../../scripts/Auxiliary/Auxiliary';
 import Input from '../../components/UI/Input/Input';
 import Error from '../../components/UI/Error/Error';
-import { ModalContext } from './modalContext';
-import { ModalReducer } from './modalReducer';
+import { ModalContext } from './ModalContext';
+import { modalReducer } from './modalReducer';
 import {
   AVATAR_MODAL,
   EDIT_MODAL,
@@ -24,7 +24,7 @@ export const ModalState = ({ children }) => {
     isFormValid: false,
   };
 
-  const [state, dispatch] = useReducer(ModalReducer, initialState);
+  const [state, dispatch] = useReducer(modalReducer, initialState);
 
   const setConfig = (typeModal, userInfo) => {
     if (typeModal === 'Avatar') {
