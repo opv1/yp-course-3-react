@@ -50,28 +50,28 @@ export const AppState = ({ children }) => {
   };
 
   const setModal = (event) => {
-    if (event.target.closest('.Profile_Avatar__2gqkF')) {
+    if (event.target.closest('.Profile_Avatar__1WcQA')) {
       dispatch({
         type: SET_MODAL,
         typeModal: 'Avatar',
       });
     }
 
-    if (event.target.closest('.Button_Edit__2mjyM')) {
+    if (event.target.closest('.Button_Edit__3kaWS')) {
       dispatch({
         type: SET_MODAL,
         typeModal: 'Edit',
       });
     }
 
-    if (event.target.closest('.Button_Add__pQA0V')) {
+    if (event.target.closest('.Button_Add__1hNMN')) {
       dispatch({
         type: SET_MODAL,
         typeModal: 'Add',
       });
     }
 
-    if (event.target.closest('.Card_Image__3zHVY')) {
+    if (event.target.closest('.Card_Image__Anzn4')) {
       const backgroundImage = {
         backgroundImage: event.target.style.backgroundImage,
       };
@@ -90,7 +90,7 @@ export const AppState = ({ children }) => {
     const form = event.target;
     const button = form.elements.button;
 
-    if (event.target.closest('.Form_Avatar__2B2kZ')) {
+    if (event.target.closest('.Form_Avatar__2Qv3w')) {
       const loadPromise = new Promise((resolve) => {
         button.textContent = 'Загрузка...';
         resolve(
@@ -113,7 +113,7 @@ export const AppState = ({ children }) => {
         .catch((error) => console.log(error));
     }
 
-    if (event.target.closest('.Form_Edit__32yl-')) {
+    if (event.target.closest('.Form_Edit__3Z2U3')) {
       const loadPromise = new Promise((resolve) => {
         button.textContent = 'Загрузка...';
         resolve(
@@ -138,7 +138,7 @@ export const AppState = ({ children }) => {
         .catch((error) => console.log(error));
     }
 
-    if (event.target.closest('.Form_Add__3j5Xp')) {
+    if (event.target.closest('.Form_Add__2n7i5')) {
       const loadPromise = new Promise((resolve) => {
         button.textContent = 'Загрузка...';
         resolve(

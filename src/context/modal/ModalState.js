@@ -35,6 +35,7 @@ export const ModalState = ({ children }) => {
         type: VALIDATE_FORM,
       });
     }
+
     if (typeModal === 'Edit') {
       dispatch({
         type: EDIT_MODAL,
@@ -44,6 +45,7 @@ export const ModalState = ({ children }) => {
         type: VALIDATE_FORM,
       });
     }
+
     if (typeModal === 'Add') {
       dispatch({
         type: ADD_MODAL,

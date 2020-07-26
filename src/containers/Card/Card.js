@@ -32,10 +32,10 @@ function Card({ children }) {
   }, []);
 
   const toggleLike = (event) => {
-    const card = event.target.closest('.Card_Card__1-aIe').getAttribute('data');
-    const likeIcon = event.target.closest('.Button_LikeIcon__2q2NK');
+    const card = event.target.closest('.Card_Card__9JkoW').getAttribute('data');
+    const likeIcon = event.target.closest('.Button_LikeIcon__DXYuT');
 
-    if (likeIcon.classList.contains('Button_ActiveLikeIcon__1dC21')) {
+    if (likeIcon.classList.contains('Button_ActiveLikeIcon__Sjrf-')) {
       axiosData
         .delete(`/cards/like/${card}`)
         .then(() =>

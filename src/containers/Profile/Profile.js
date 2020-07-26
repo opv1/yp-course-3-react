@@ -14,18 +14,18 @@ function Profile() {
     <div className={classes.Profile}>
       <div className={classes.Info}>
         <div
-          className={classes.Avatar}
           onClick={toggleModal}
+          className={classes.Avatar}
           style={backgroundImage}
         ></div>
         <div className={classes.Data}>
           <h1 className={classes.Name}>{userInfo.name}</h1>
           <p className={classes.Job}>{userInfo.about}</p>
-          <Button type={'Edit'} onClick={toggleModal}>
+          <Button onClick={toggleModal} type={'Edit'}>
             edit
           </Button>
         </div>
-        <Button type={'Add'} onClick={toggleModal}>
+        <Button onClick={toggleModal} type={'Add'}>
           +
         </Button>
       </div>
