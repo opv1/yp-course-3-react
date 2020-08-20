@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const baseURL =
   process.env.NODE_ENV === 'development'
-    ? 'http://praktikum.tk/cohort8'
-    : 'https://praktikum.tk/cohort8';
+    ? 'http://nomoreparties.co/cohort8'
+    : 'https://nomoreparties.co/cohort8';
 
 export const axiosData = axios.create({
   baseURL,
