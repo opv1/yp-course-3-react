@@ -1,10 +1,11 @@
 .Button {
+  border: 1px solid #fff;
+  color: #fff;
   background-color: transparent;
-  border: 1px solid white;
-  color: white;
   cursor: pointer;
+
   &:focus {
-    outline-color: greenyellow;
+    outline-color: #adff2f;
   }
 }
 
@@ -13,16 +14,17 @@
   width: 38px;
   height: 18px;
   font-size: 11px;
+
   &::first-letter {
     text-transform: uppercase;
   }
 }
 
 .Add {
-  display: block;
   position: absolute;
-  top: 16px;
   right: 0;
+  top: 16px;
+  display: block;
   width: 150px;
   height: 50px;
   font-size: 30px;
@@ -30,51 +32,53 @@
 
 .Popup {
   margin-top: 48px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   width: 100%;
   height: 50px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  color: #ffffff;
-  background-color: #000000;
   font-size: 18px;
   line-height: 22px;
+  color: #fff;
+  background-color: #000;
+
   &::first-letter {
     text-transform: uppercase;
   }
 }
 
 .DeleteIcon {
-  display: none;
   position: absolute;
-  top: 18px;
   right: 15px;
-  background: url(../../../images/trash-icon.svg) center no-repeat;
-  background-color: transparent;
+  top: 18px;
+  display: none;
   border: none;
   width: 18px;
   height: 20px;
+  background: url('../../../images/trash-icon.svg') center no-repeat;
+  background-color: transparent;
   cursor: pointer;
 }
 
 .LikeIcon {
+  border: none;
   width: 21px;
   height: 19px;
-  background: url(../../../images/like-inactive.svg) center no-repeat;
+  background: url('../../../images/like-inactive.svg') center no-repeat;
   background-color: transparent;
-  border: none;
-  cursor: pointer;
   transition: transform 0.3s linear;
+  cursor: pointer;
 }
 
 .ActiveLikeIcon {
-  background-image: url(../../../images/like-active.svg);
+  background-image: url('../../../images/like-active.svg');
+
   &:hover {
     transform: scale(1.03);
   }
 }
 
 .Disabled {
-  background-color: #ffffff;
   color: rgba(0, 0, 0, 0.2);
+  background-color: #fff;
 }
 
 .DisplayBlock {

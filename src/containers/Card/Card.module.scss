@@ -1,35 +1,36 @@
 .Card {
+  border-radius: 10px;
   width: 282px;
   min-height: 360px;
   background-color: #fff;
-  border-radius: 10px;
 }
 
 .Image {
   position: relative;
-  height: 282px;
-  background-size: cover;
-  background-position: center;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  height: 282px;
+  background-position: center;
+  background-size: cover;
   cursor: pointer;
+
   &::after {
     content: '';
     display: block;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     width: 282px;
     height: 282px;
     background-color: rgba(0, 0, 0, 0.3);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
   }
 }
 
 .Description {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 0 22px;
   min-height: 78px;
-  align-items: center;
   box-sizing: border-box;
 }
 
