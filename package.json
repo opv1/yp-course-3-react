@@ -1,7 +1,7 @@
 {
   "name": "mesto-app-yp-react",
   "version": "1.0.0",
-  "description": "Mesto",
+  "description": "Mesto React",
   "private": true,
   "homepage": "https://opv1.github.io/mesto-app-yp-react/",
   "dependencies": {
