@@ -90,7 +90,7 @@ export const AppState = ({ children }) => {
     const form = event.target
     const button = form.elements.button
 
-    if (event.target.closest('.Form_Avatar__2Qv3w')) {
+    if (event.target.closest('.Form_Avatar')) {
       const loadPromise = new Promise((resolve) => {
         button.textContent = 'Загрузка...'
         resolve(
@@ -113,7 +113,7 @@ export const AppState = ({ children }) => {
         .catch((error) => console.log(error))
     }
 
-    if (event.target.closest('.Form_Edit__3Z2U3')) {
+    if (event.target.closest('.Form_Edit')) {
       const loadPromise = new Promise((resolve) => {
         button.textContent = 'Загрузка...'
         resolve(
@@ -138,7 +138,7 @@ export const AppState = ({ children }) => {
         .catch((error) => console.log(error))
     }
 
-    if (event.target.closest('.Form_Add__2n7i5')) {
+    if (event.target.closest('.Form_Add')) {
       const loadPromise = new Promise((resolve) => {
         button.textContent = 'Загрузка...'
         resolve(

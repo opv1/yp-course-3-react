@@ -32,10 +32,10 @@ function Card({ children }) {
   }, [])
 
   const toggleLike = (event) => {
-    const card = event.target.closest('.Card_Card__9JkoW').getAttribute('data')
-    const likeIcon = event.target.closest('.Button_LikeIcon__DXYuT')
+    const card = event.target.closest('.Card_Card').getAttribute('data')
+    const likeIcon = event.target.closest('.Button_LikeIcon')
 
-    if (likeIcon.classList.contains('Button_ActiveLikeIcon__Sjrf-')) {
+    if (likeIcon.classList.contains(`Button_ActiveLikeIcon__${children._id}`)) {
       axiosData
         .delete(`/cards/like/${card}`)
         .then(() =>
@@ -65,7 +65,7 @@ function Card({ children }) {
   }
 
   return (
-    <div className={classes.Card} data={children._id}>
+    <div className={`${classes.Card} Card_Card`} data={children._id}>
       <div
         onClick={toggleModal}
         className={`${classes.Image} Card_Image`}
@@ -84,6 +84,7 @@ function Card({ children }) {
             onClick={(event) => toggleLike(event)}
             type={'LikeIcon'}
             activateLike={state.activateLike}
+            id={children._id}
           />
           <span className={classes.LikeCounter}>{state.likeCounter}</span>
         </div>

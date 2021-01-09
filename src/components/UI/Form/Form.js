@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './Form.module.scss'
 
 const Form = ({ onSubmit, type, name, style, children }) => {
-  const cls = [classes.Form, classes[type]]
+  const cls = [classes.Form, classes[type], `Form_${type}`]
 
   return (
     <form

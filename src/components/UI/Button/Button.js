@@ -6,6 +6,7 @@ const Button = ({
   type,
   disabled,
   activateLike,
+  id,
   showDeleteIcon,
   children,
 }) => {
@@ -16,7 +17,7 @@ const Button = ({
   }
 
   if (activateLike) {
-    cls.push(classes.ActiveLikeIcon)
+    cls.push(`${classes.ActiveLikeIcon} Button_ActiveLikeIcon__${id}`)
   }
 
   if (showDeleteIcon) {
