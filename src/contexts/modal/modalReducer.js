@@ -4,11 +4,11 @@ import {
   ADD_MODAL,
   VALIDATE_FORM,
   INPUT_CHANGE,
-} from '../types';
+} from '../types'
 import {
   createControl,
   validateForm,
-} from '../../scripts/formFramework/formFramework';
+} from '../../scripts/formFramework/formFramework'
 
 const handlers = {
   [AVATAR_MODAL]: (state) => ({
@@ -94,10 +94,10 @@ const handlers = {
     isFormValid: payload.isFormValid,
   }),
   DEFAULT: (state) => state,
-};
+}
 
 export const modalReducer = (state, action) => {
-  const handler = handlers[action.type] || handlers.DEFAULT;
+  const handler = handlers[action.type] || handlers.DEFAULT
 
-  return handler(state, action);
-};
+  return handler(state, action)
+}

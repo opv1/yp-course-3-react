@@ -1,21 +1,21 @@
-import React, { useContext } from 'react';
-import classes from './Profile.module.scss';
-import Button from '../../components/UI/Button/Button';
-import { AppContext } from '../../context/app/AppContext';
+import React, { useContext } from 'react'
+import classes from './Profile.module.scss'
+import Button from '../UI/Button/Button'
+import { AppContext } from '../../contexts/app/AppContext'
 
 function Profile() {
-  const { userInfo, toggleModal } = useContext(AppContext);
+  const { userInfo, toggleModal } = useContext(AppContext)
 
   const backgroundImage = {
     backgroundImage: `url('${userInfo.avatar}')`,
-  };
+  }
 
   return (
     <div className={classes.Profile}>
       <div className={classes.Info}>
         <div
           onClick={toggleModal}
-          className={classes.Avatar}
+          className={`${classes.Avatar} Profile_Avatar`}
           style={backgroundImage}
         ></div>
         <div className={classes.Data}>
@@ -30,7 +30,7 @@ function Profile() {
         </Button>
       </div>
     </div>
-  );
+  )
 }
 
-export default Profile;
+export default Profile

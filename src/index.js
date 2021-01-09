@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.scss';
-import App from './App';
-import { AppState } from './context/app/AppState';
-import { ModalState } from './context/modal/ModalState';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.scss'
+import App from './App'
+import { AppState } from './contexts/app/AppState'
+import { ModalState } from './contexts/modal/ModalState'
+import * as serviceWorker from './serviceWorker'
 
 const Application = (
   <AppState>
@@ -12,8 +12,8 @@ const Application = (
       <App />
     </ModalState>
   </AppState>
-);
+)
 
-ReactDOM.render(Application, document.getElementById('root'));
+ReactDOM.render(Application, document.getElementById('root'))
 
-serviceWorker.unregister();
+serviceWorker.unregister()

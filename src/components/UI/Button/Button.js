@@ -1,5 +1,5 @@
-import React from 'react';
-import classes from './Button.module.scss';
+import React from 'react'
+import classes from './Button.module.scss'
 
 const Button = ({
   onClick,
@@ -9,18 +9,18 @@ const Button = ({
   showDeleteIcon,
   children,
 }) => {
-  const cls = [classes.Button, classes[type]];
+  const cls = [classes.Button, classes[type], `Button_${type}`]
 
   if (disabled) {
-    cls.push(classes.Disabled);
+    cls.push(classes.Disabled)
   }
 
   if (activateLike) {
-    cls.push(classes.ActiveLikeIcon);
+    cls.push(classes.ActiveLikeIcon)
   }
 
   if (showDeleteIcon) {
-    cls.push(classes.DisplayBlock);
+    cls.push(classes.DisplayBlock)
   }
 
   return (
@@ -32,7 +32,7 @@ const Button = ({
     >
       {children}
     </button>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

@@ -1,5 +1,5 @@
-import React from 'react';
-import classes from './Input.module.scss';
+import React from 'react'
+import classes from './Input.module.scss'
 
 const Input = ({
   onChange,
@@ -10,10 +10,10 @@ const Input = ({
   valid,
   validation,
 }) => {
-  const cls = [classes.Input];
+  const cls = [classes.Input]
 
   if (!valid) {
-    cls.push(classes.invalid);
+    cls.push(classes.invalid)
   }
 
   return (
@@ -28,7 +28,7 @@ const Input = ({
       maxLength={validation.maxLength}
       required
     />
-  );
-};
+  )
+}
 
-export default Input;
+export default Input

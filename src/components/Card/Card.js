@@ -1,39 +1,39 @@
-import React, { useState, useEffect, useContext } from 'react';
-import classes from './Card.module.scss';
-import { axiosData } from '../../scripts/axios/axios';
-import Button from '../../components/UI/Button/Button';
-import { AppContext } from '../../context/app/AppContext';
+import React, { useState, useEffect, useContext } from 'react'
+import classes from './Card.module.scss'
+import { axiosData } from '../../scripts/axios/axios'
+import Button from '../UI/Button/Button'
+import { AppContext } from '../../contexts/app/AppContext'
 
 function Card({ children }) {
   const [state, setState] = useState({
     showDeleteIcon: false,
     activateLike: false,
     likeCounter: null,
-  });
+  })
 
-  const { myId, toggleModal, removeCard } = useContext(AppContext);
+  const { myId, toggleModal, removeCard } = useContext(AppContext)
 
   useEffect(() => {
     if (children.owner._id === myId) {
-      setState((prevState) => ({ ...prevState, showDeleteIcon: true }));
+      setState((prevState) => ({ ...prevState, showDeleteIcon: true }))
     }
 
     children.likes.forEach((like) => {
       if (like._id === myId) {
-        setState((prevState) => ({ ...prevState, activateLike: true }));
+        setState((prevState) => ({ ...prevState, activateLike: true }))
       }
-    });
+    })
 
     setState((prevState) => ({
       ...prevState,
       likeCounter: children.likes.length,
-    }));
+    }))
     // eslint-disable-next-line
-  }, []);
+  }, [])
 
   const toggleLike = (event) => {
-    const card = event.target.closest('.Card_Card__9JkoW').getAttribute('data');
-    const likeIcon = event.target.closest('.Button_LikeIcon__DXYuT');
+    const card = event.target.closest('.Card_Card__9JkoW').getAttribute('data')
+    const likeIcon = event.target.closest('.Button_LikeIcon__DXYuT')
 
     if (likeIcon.classList.contains('Button_ActiveLikeIcon__Sjrf-')) {
       axiosData
@@ -45,7 +45,7 @@ function Card({ children }) {
             likeCounter: prevState.likeCounter - 1,
           }))
         )
-        .catch((error) => console.log(error));
+        .catch((error) => console.log(error))
     } else {
       axiosData
         .put(`/cards/like/${card}`)
@@ -56,19 +56,19 @@ function Card({ children }) {
             likeCounter: prevState.likeCounter + 1,
           }))
         )
-        .catch((error) => console.log(error));
+        .catch((error) => console.log(error))
     }
-  };
+  }
 
   const backgroundImage = {
     backgroundImage: `url('${children.link}')`,
-  };
+  }
 
   return (
     <div className={classes.Card} data={children._id}>
       <div
         onClick={toggleModal}
-        className={classes.Image}
+        className={`${classes.Image} Card_Image`}
         style={backgroundImage}
       >
         <Button
@@ -89,7 +89,7 @@ function Card({ children }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Card;
+export default Card

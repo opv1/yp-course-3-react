@@ -6,7 +6,7 @@ import {
   INFO_UPDATE,
   CARDS_UPDATE,
   REMOVE_CARD,
-} from '../types';
+} from '../types'
 
 const handlers = {
   [INITIAL_DATA]: (state, payload) => ({
@@ -38,10 +38,10 @@ const handlers = {
     initialCards: payload.initialCards,
   }),
   DEFAULT: (state) => state,
-};
+}
 
 export const appReducer = (state, action) => {
-  const handler = handlers[action.type] || handlers.DEFAULT;
+  const handler = handlers[action.type] || handlers.DEFAULT
 
-  return handler(state, action);
-};
+  return handler(state, action)
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const withClass = (Component, className) => {
   return (props) => {
@@ -6,8 +6,8 @@ const withClass = (Component, className) => {
       <div className={className}>
         <Component {...props} />
       </div>
-    );
-  };
-};
+    )
+  }
+}
 
-export default withClass;
+export default withClass

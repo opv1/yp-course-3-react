@@ -3,15 +3,13 @@
   <img src="https://img.shields.io/badge/made%20by-opv1-blue.svg">
 </p>
 
-## Описание
+## Description
 
-Приложение, в котором реализованы запросы на сервер для рендера информации и изменения информации на странице пользователя
+Stack: React
 
-Стек: HTML, CSS, SCSS, React
+## [See the project](https://opv1.github.io/mesto-yp-react/)
 
-## [Увидеть проект](https://opv1.github.io/mesto-app-yp-react/)
-
-## Настройка проекта
+## Setup
 
 ```
 npm run build

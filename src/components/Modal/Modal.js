@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from 'react';
-import classes from './Modal.module.scss';
-import close from '../../images/close.svg';
-import Form from '../../components/UI/Form/Form';
-import Button from '../../components/UI/Button/Button';
-import { AppContext } from '../../context/app/AppContext';
-import { ModalContext } from '../../context/modal/ModalContext';
+import React, { useContext, useEffect } from 'react'
+import classes from './Modal.module.scss'
+import close from '../../images/close.svg'
+import Form from '../UI/Form/Form'
+import Button from '../UI/Button/Button'
+import { AppContext } from '../../contexts/app/AppContext'
+import { ModalContext } from '../../contexts/modal/ModalContext'
 
 function Modal() {
   const {
@@ -13,22 +13,22 @@ function Modal() {
     openImage,
     updateData,
     toggleModal,
-  } = useContext(AppContext);
+  } = useContext(AppContext)
 
   const { configModal, isFormValid, setConfig, renderInputs } = useContext(
     ModalContext
-  );
+  )
 
   useEffect(() => {
     if (typeModal === 'Edit') {
-      setConfig(typeModal, userInfo);
+      setConfig(typeModal, userInfo)
     } else {
-      setConfig(typeModal);
+      setConfig(typeModal)
     }
     // eslint-disable-next-line
-  }, []);
+  }, [])
 
-  const cls = [classes.Modal, classes[typeModal]];
+  const cls = [classes.Modal, classes[typeModal]]
 
   return (
     <div className={cls.join(' ')}>
@@ -65,7 +65,7 @@ function Modal() {
         </Form>
       </div>
     </div>
-  );
+  )
 }
 
-export default Modal;
+export default Modal

@@ -1,7 +1,7 @@
-import React, { useReducer } from 'react';
-import { axiosData } from '../../scripts/axios/axios';
-import { AppContext } from './AppContext';
-import { appReducer } from './appReducer';
+import React, { useReducer } from 'react'
+import { axiosData } from '../../scripts/axios/axios'
+import { AppContext } from './AppContext'
+import { appReducer } from './appReducer'
 import {
   INITIAL_DATA,
   TOGGLE_MODAL,
@@ -10,7 +10,7 @@ import {
   INFO_UPDATE,
   CARDS_UPDATE,
   REMOVE_CARD,
-} from '../types';
+} from '../types'
 
 export const AppState = ({ children }) => {
   const initialState = {
@@ -21,18 +21,18 @@ export const AppState = ({ children }) => {
     initialCards: [],
     typeModal: null,
     openImage: null,
-  };
+  }
 
-  const [state, dispatch] = useReducer(appReducer, initialState);
+  const [state, dispatch] = useReducer(appReducer, initialState)
 
   const initialData = async () => {
-    const responseInfo = await axiosData.get('/users/me/');
-    const responseCards = await axiosData.get('/cards/');
-    const myCards = [];
+    const responseInfo = await axiosData.get('/users/me/')
+    const responseCards = await axiosData.get('/cards/')
+    const myCards = []
 
     for (let i = 0; responseCards.data.length > i; i++) {
       if (responseCards.data[i].owner._id === state.myId) {
-        myCards.push(responseCards.data[i]);
+        myCards.push(responseCards.data[i])
       }
     }
 
@@ -40,65 +40,65 @@ export const AppState = ({ children }) => {
       type: INITIAL_DATA,
       userInfo: responseInfo.data,
       initialCards: myCards,
-    });
-  };
+    })
+  }
 
   const toggleModal = () => {
     dispatch({
       type: TOGGLE_MODAL,
-    });
-  };
+    })
+  }
 
   const setModal = (event) => {
-    if (event.target.closest('.Profile_Avatar__1WcQA')) {
+    if (event.target.closest('.Profile_Avatar')) {
       dispatch({
         type: SET_MODAL,
         typeModal: 'Avatar',
-      });
+      })
     }
 
-    if (event.target.closest('.Button_Edit__3kaWS')) {
+    if (event.target.closest('.Button_Edit')) {
       dispatch({
         type: SET_MODAL,
         typeModal: 'Edit',
-      });
+      })
     }
 
-    if (event.target.closest('.Button_Add__1hNMN')) {
+    if (event.target.closest('.Button_Add')) {
       dispatch({
         type: SET_MODAL,
         typeModal: 'Add',
-      });
+      })
     }
 
-    if (event.target.closest('.Card_Image__Anzn4')) {
+    if (event.target.closest('.Card_Image')) {
       const backgroundImage = {
         backgroundImage: event.target.style.backgroundImage,
-      };
+      }
 
       dispatch({
         type: SET_MODAL,
         typeModal: 'Image',
         openImage: backgroundImage,
-      });
+      })
     }
-  };
+  }
 
   const updateData = (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    const form = event.target;
-    const button = form.elements.button;
+    const form = event.target
+    const button = form.elements.button
 
     if (event.target.closest('.Form_Avatar__2Qv3w')) {
       const loadPromise = new Promise((resolve) => {
-        button.textContent = 'Загрузка...';
+        button.textContent = 'Загрузка...'
         resolve(
           axiosData.patch('/users/me/avatar/', {
             avatar: form.elements.link.value,
           })
-        );
-      });
+        )
+      })
       loadPromise
         .then(() =>
           dispatch({
@@ -110,19 +110,19 @@ export const AppState = ({ children }) => {
           })
         )
         .then(() => toggleModal())
-        .catch((error) => console.log(error));
+        .catch((error) => console.log(error))
     }
 
     if (event.target.closest('.Form_Edit__3Z2U3')) {
       const loadPromise = new Promise((resolve) => {
-        button.textContent = 'Загрузка...';
+        button.textContent = 'Загрузка...'
         resolve(
           axiosData.patch('/users/me/', {
             name: form.elements.name.value,
             about: form.elements.info.value,
           })
-        );
-      });
+        )
+      })
       loadPromise
         .then(() =>
           dispatch({
@@ -135,19 +135,19 @@ export const AppState = ({ children }) => {
           })
         )
         .then(() => toggleModal())
-        .catch((error) => console.log(error));
+        .catch((error) => console.log(error))
     }
 
     if (event.target.closest('.Form_Add__2n7i5')) {
       const loadPromise = new Promise((resolve) => {
-        button.textContent = 'Загрузка...';
+        button.textContent = 'Загрузка...'
         resolve(
           axiosData.post('/cards/', {
             name: form.elements.name.value,
             link: form.elements.link.value,
           })
-        );
-      });
+        )
+      })
       loadPromise
         .then((card) =>
           dispatch({
@@ -156,14 +156,14 @@ export const AppState = ({ children }) => {
           })
         )
         .then(() => toggleModal())
-        .catch((error) => console.log(error));
+        .catch((error) => console.log(error))
     }
-  };
+  }
 
   const removeCard = (event, cardId) => {
-    event.stopPropagation();
+    event.stopPropagation()
 
-    const filteredCards = initialCards.filter((card) => card._id !== cardId);
+    const filteredCards = initialCards.filter((card) => card._id !== cardId)
 
     axiosData
       .delete(`/cards/${cardId}/`)
@@ -173,8 +173,8 @@ export const AppState = ({ children }) => {
           initialCards: filteredCards,
         })
       )
-      .catch((error) => console.log(error));
-  };
+      .catch((error) => console.log(error))
+  }
 
   const {
     loading,
@@ -184,7 +184,7 @@ export const AppState = ({ children }) => {
     initialCards,
     typeModal,
     openImage,
-  } = state;
+  } = state
 
   return (
     <AppContext.Provider
@@ -205,5 +205,5 @@ export const AppState = ({ children }) => {
     >
       {children}
     </AppContext.Provider>
-  );
-};
+  )
+}

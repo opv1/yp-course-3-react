@@ -1,8 +1,8 @@
-import React from 'react';
-import classes from './Form.module.scss';
+import React from 'react'
+import classes from './Form.module.scss'
 
 const Form = ({ onSubmit, type, name, style, children }) => {
-  const cls = [classes.Form, classes[type]];
+  const cls = [classes.Form, classes[type]]
 
   return (
     <form
@@ -14,7 +14,7 @@ const Form = ({ onSubmit, type, name, style, children }) => {
     >
       {children}
     </form>
-  );
-};
+  )
+}
 
-export default Form;
+export default Form

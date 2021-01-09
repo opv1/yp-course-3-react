@@ -1,4 +1,4 @@
-import is from 'is_js';
+import is from 'is_js'
 
 export function createControl(config, validation) {
   return {
@@ -7,59 +7,59 @@ export function createControl(config, validation) {
     validation,
     valid: validateControl(config.value, validation),
     errorMessage: errorMessage(config.value, validation, false),
-  };
+  }
 }
 
 export function validateForm(formControls) {
-  let isFormValid = true;
+  let isFormValid = true
 
   for (let control in formControls) {
     if (formControls.hasOwnProperty(control)) {
-      isFormValid = formControls[control].valid && isFormValid;
+      isFormValid = formControls[control].valid && isFormValid
     }
   }
 
-  return isFormValid;
+  return isFormValid
 }
 
 export function validateControl(value, validation) {
   if (!validation) {
-    return true;
+    return true
   }
 
-  let isValid = true;
+  let isValid = true
 
   if (validation.required) {
-    isValid = value.trim() !== '' && isValid;
+    isValid = value.trim() !== '' && isValid
   }
 
   if (validation.minLength) {
-    isValid = value.length >= validation.minLength && isValid;
+    isValid = value.length >= validation.minLength && isValid
   }
 
   if (validation.url) {
-    isValid = is.url(value) && isValid;
+    isValid = is.url(value) && isValid
   }
 
-  return isValid;
+  return isValid
 }
 
 export function errorMessage(value, validation, touched) {
   if (!touched) {
-    return '';
+    return ''
   }
 
   if (value.length === 0) {
-    return 'Это обязательное поле';
+    return 'Это обязательное поле'
   }
 
   if (value.length < validation.minLength) {
-    return 'Должно быть от 2 до 30 символов';
+    return 'Должно быть от 2 до 30 символов'
   }
 
   if (!is.url(value)) {
-    return 'Здесь должна быть ссылка';
+    return 'Здесь должна быть ссылка'
   }
 
-  return false;
+  return false
 }
