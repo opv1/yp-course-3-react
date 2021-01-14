@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/mesto-yp-react/static/css/main.41311265.chunk.css",
+    "main.css": "/mesto-yp-react/static/css/main.31c4e7cf.chunk.css",
     "main.js": "/mesto-yp-react/static/js/main.b526e0f3.chunk.js",
     "main.js.map": "/mesto-yp-react/static/js/main.b526e0f3.chunk.js.map",
     "runtime-main.js": "/mesto-yp-react/static/js/runtime-main.df644ebf.js",
@@ -8,7 +8,7 @@
     "static/js/2.d88eb1be.chunk.js": "/mesto-yp-react/static/js/2.d88eb1be.chunk.js",
     "static/js/2.d88eb1be.chunk.js.map": "/mesto-yp-react/static/js/2.d88eb1be.chunk.js.map",
     "index.html": "/mesto-yp-react/index.html",
-    "static/css/main.41311265.chunk.css.map": "/mesto-yp-react/static/css/main.41311265.chunk.css.map",
+    "static/css/main.31c4e7cf.chunk.css.map": "/mesto-yp-react/static/css/main.31c4e7cf.chunk.css.map",
     "static/js/2.d88eb1be.chunk.js.LICENSE.txt": "/mesto-yp-react/static/js/2.d88eb1be.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/mesto-yp-react/static/media/Inter-Regular.dcba3388.woff2",
     "static/media/close.8a65f75d.svg": "/mesto-yp-react/static/media/close.8a65f75d.svg",
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.df644ebf.js",
     "static/js/2.d88eb1be.chunk.js",
-    "static/css/main.41311265.chunk.css",
+    "static/css/main.31c4e7cf.chunk.css",
     "static/js/main.b526e0f3.chunk.js"
   ]
 }
