@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/mesto-yp-react/static/css/main.31c4e7cf.chunk.css",
-    "main.js": "/mesto-yp-react/static/js/main.b526e0f3.chunk.js",
-    "main.js.map": "/mesto-yp-react/static/js/main.b526e0f3.chunk.js.map",
-    "runtime-main.js": "/mesto-yp-react/static/js/runtime-main.df644ebf.js",
-    "runtime-main.js.map": "/mesto-yp-react/static/js/runtime-main.df644ebf.js.map",
-    "static/js/2.d88eb1be.chunk.js": "/mesto-yp-react/static/js/2.d88eb1be.chunk.js",
-    "static/js/2.d88eb1be.chunk.js.map": "/mesto-yp-react/static/js/2.d88eb1be.chunk.js.map",
-    "index.html": "/mesto-yp-react/index.html",
-    "static/css/main.31c4e7cf.chunk.css.map": "/mesto-yp-react/static/css/main.31c4e7cf.chunk.css.map",
-    "static/js/2.d88eb1be.chunk.js.LICENSE.txt": "/mesto-yp-react/static/js/2.d88eb1be.chunk.js.LICENSE.txt",
-    "static/media/index.scss": "/mesto-yp-react/static/media/Inter-Regular.dcba3388.woff2",
-    "static/media/close.8a65f75d.svg": "/mesto-yp-react/static/media/close.8a65f75d.svg",
-    "static/media/Button.module.scss": "/mesto-yp-react/static/media/trash-icon.5b1a1cdd.svg",
-    "static/media/logo.fad4f8a5.svg": "/mesto-yp-react/static/media/logo.fad4f8a5.svg"
+    "main.css": "/mesto-react/static/css/main.68ad64a7.chunk.css",
+    "main.js": "/mesto-react/static/js/main.b8d8525f.chunk.js",
+    "main.js.map": "/mesto-react/static/js/main.b8d8525f.chunk.js.map",
+    "runtime-main.js": "/mesto-react/static/js/runtime-main.fd6bc443.js",
+    "runtime-main.js.map": "/mesto-react/static/js/runtime-main.fd6bc443.js.map",
+    "static/js/2.99aef316.chunk.js": "/mesto-react/static/js/2.99aef316.chunk.js",
+    "static/js/2.99aef316.chunk.js.map": "/mesto-react/static/js/2.99aef316.chunk.js.map",
+    "index.html": "/mesto-react/index.html",
+    "static/css/main.68ad64a7.chunk.css.map": "/mesto-react/static/css/main.68ad64a7.chunk.css.map",
+    "static/js/2.99aef316.chunk.js.LICENSE.txt": "/mesto-react/static/js/2.99aef316.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/mesto-react/static/media/Inter-Regular.dcba3388.woff2",
+    "static/media/close.8a65f75d.svg": "/mesto-react/static/media/close.8a65f75d.svg",
+    "static/media/Button.module.scss": "/mesto-react/static/media/trash-icon.5b1a1cdd.svg",
+    "static/media/logo.fad4f8a5.svg": "/mesto-react/static/media/logo.fad4f8a5.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.df644ebf.js",
-    "static/js/2.d88eb1be.chunk.js",
-    "static/css/main.31c4e7cf.chunk.css",
-    "static/js/main.b526e0f3.chunk.js"
+    "static/js/runtime-main.fd6bc443.js",
+    "static/js/2.99aef316.chunk.js",
+    "static/css/main.68ad64a7.chunk.css",
+    "static/js/main.b8d8525f.chunk.js"
   ]
 }
