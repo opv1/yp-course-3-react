@@ -7,7 +7,7 @@
 
 Stack: React
 
-## [See the project](https://opv1.github.io/mesto-yp-react/)
+## [See the project](https://opv1.github.io/mesto-react/)
 
 ## Setup
 
